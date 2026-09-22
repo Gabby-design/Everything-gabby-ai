@@ -1,3 +1,2 @@
 #!/usr/bin/env sh
-DIR="$(cd "$(dirname "$0")" && pwd)"
-exec node "$DIR/gabby.js" "$@"
+node "C:\Users\Olamide\Documents\everything-gabby-ai\bin\gabby.js" "$@"

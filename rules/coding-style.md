@@ -1,3 +1,9 @@
+---
+name: coding-style
+description: Coding Style - pure Node >= 18, zero external runtime dependencies, zero emojis, file length limits (< 400 lines).
+applyTo: "**"
+---
+
 # Coding Style
 
 ## Immutability (CRITICAL)

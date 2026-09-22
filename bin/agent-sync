@@ -1,0 +1,2 @@
+#!/usr/bin/env sh
+node "C:\Users\Olamide\Documents\everything-gabby-ai\scripts\sync-global.js" "$@"

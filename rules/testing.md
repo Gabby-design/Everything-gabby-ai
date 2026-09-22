@@ -1,3 +1,9 @@
+---
+name: testing
+description: Testing Requirements - test-driven development, regression tests first, and contract verification.
+applyTo: "**"
+---
+
 # Testing Requirements
 
 ## Minimum Test Coverage: 80%

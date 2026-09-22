@@ -1,3 +1,9 @@
+---
+name: agents
+description: Agent Orchestration - personas, specialization, handoffs, and verification workflows.
+applyTo: "**"
+---
+
 # Agent Orchestration
 
 ## Available Agents

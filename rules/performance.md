@@ -1,3 +1,9 @@
+---
+name: performance
+description: Performance Optimization - fast CLI startup (< 200ms), streaming output, and sub-second execution.
+applyTo: "**"
+---
+
 # Performance Optimization
 
 ## Model Selection Strategy

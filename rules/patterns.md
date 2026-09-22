@@ -1,3 +1,9 @@
+---
+name: patterns
+description: Common Patterns - zero-dependency architectures, state machines, and idempotent file operations.
+applyTo: "**"
+---
+
 # Common Patterns
 
 ## API Response Format

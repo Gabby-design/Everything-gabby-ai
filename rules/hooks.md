@@ -1,3 +1,9 @@
+---
+name: hooks
+description: Hooks System - lifecycle hooks, event triggers, deterministic execution, and timeout safety.
+applyTo: "**"
+---
+
 # Hooks System
 
 ## Hook Types

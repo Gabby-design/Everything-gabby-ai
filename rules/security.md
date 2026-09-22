@@ -1,3 +1,9 @@
+---
+name: security
+description: Security Guidelines - write scope firewall (RULE-SCOPE-001), secret hygiene, and input sanitization.
+applyTo: "**"
+---
+
 # Security Guidelines
 
 ## Mandatory Security Checks

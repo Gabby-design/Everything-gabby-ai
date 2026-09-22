@@ -50,6 +50,7 @@ const COMMANDS = {
   caveman: () => require('../scripts/lib/commands/caveman'),
   ctx: () => require('../scripts/lib/commands/ctx'),
   uninstall: () => require('../scripts/lib/commands/uninstall'),
+  publish: () => require('../scripts/lib/commands/publish'),
   new: () => require('../scripts/lib/commands/new'),
   list: () => require('../scripts/lib/commands/list'),
   check: () => ({
@@ -67,7 +68,8 @@ function printHelp() {
   console.log('  list       show every skill, agent persona, and rule');
   console.log('  new        scaffold a skill | workflow | agent | rule');
   console.log('  caveman    show or set caveman output style mode: off|lite|full|ultra');
-  console.log('  uninstall  remove links and managed blocks from agent configs\n');
+  console.log('  uninstall  remove links and managed blocks from agent configs');
+  console.log('  publish    push global system updates to remote git (asks first)\n');
   console.log('Project (inside a repo):');
   console.log('  init       detect mode and print agent brief');
   console.log('  link       create/repair AGENTS.md, CLAUDE.md, GEMINI.md, Copilot, Antigravity');

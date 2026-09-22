@@ -1,3 +1,2 @@
 #!/usr/bin/env sh
-basedir=$(dirname "$0")
-exec node "$basedir/agent.js" "$@"
+node "C:\Users\Olamide\Documents\everything-gabby-ai\bin\gabby.js" "$@"

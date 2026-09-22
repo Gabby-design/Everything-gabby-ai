@@ -1,2 +1,2 @@
 @echo off
-node "%~dp0\gabby.js" %*
+node "C:\Users\Olamide\Documents\everything-gabby-ai\bin\gabby.js" %*

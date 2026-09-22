@@ -1,3 +1,9 @@
+---
+name: git-workflow
+description: The owner controls Git (RULE-GIT-001). Conventional Commits and PR workflows for when authorized.
+applyTo: "**"
+---
+
 # Git Workflow
 
 ## Commit Message Format
