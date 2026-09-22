@@ -1,392 +1,198 @@
-# Everything Claude Code
+# Everything Gabby AI
 
-[![Stars](https://img.shields.io/github/stars/affaan-m/everything-claude-code?style=flat)](https://github.com/affaan-m/everything-claude-code/stargazers)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-![Shell](https://img.shields.io/badge/-Shell-4EAA25?logo=gnu-bash&logoColor=white)
-![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?logo=typescript&logoColor=white)
-![Markdown](https://img.shields.io/badge/-Markdown-000000?logo=markdown&logoColor=white)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Tests: 177 Passing](https://img.shields.io/badge/Tests-177%20passing-brightgreen.svg)](tests/run-all.js)
+[![Node: >=18](https://img.shields.io/badge/Node-%3E%3D18-green.svg)](package.json)
+[![Zero Emojis](https://img.shields.io/badge/Emojis-Zero-lightgrey.svg)](GLOBAL.md)
+[![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20macOS%20%7C%20Linux-orange.svg)](setup.js)
 
-**The complete collection of Claude Code configs from an Anthropic hackathon winner.**
-
-Production-ready agents, skills, hooks, commands, rules, and MCP configurations evolved over 10+ months of intensive daily use building real products.
+Universal multi-agent operating system for AI coding assistants. Standardized architecture, durable memory, formal rules, specialized agents, workflows, and automated verification across Google Antigravity, Claude Code, Google Gemini CLI, GitHub Copilot, OpenAI Codex, Cursor, and Windsurf.
 
 ---
 
-## The Guides
+## Highlights
 
-This repo is the raw code only. The guides explain everything.
-
-<table>
-<tr>
-<td width="50%">
-<a href="https://x.com/affaanmustafa/status/2012378465664745795">
-<img src="https://github.com/user-attachments/assets/1a471488-59cc-425b-8345-5245c7efbcef" alt="The Shorthand Guide to Everything Claude Code" />
-</a>
-</td>
-<td width="50%">
-<a href="https://x.com/affaanmustafa/status/2014040193557471352">
-<img src="https://github.com/user-attachments/assets/c9ca43bc-b149-427f-b551-af6840c368f0" alt="The Longform Guide to Everything Claude Code" />
-</a>
-</td>
-</tr>
-<tr>
-<td align="center"><b>Shorthand Guide</b><br/>Setup, foundations, philosophy. <b>Read this first.</b></td>
-<td align="center"><b>Longform Guide</b><br/>Token optimization, memory persistence, evals, parallelization.</td>
-</tr>
-</table>
-
-| Topic | What You'll Learn |
-|-------|-------------------|
-| Token Optimization | Model selection, system prompt slimming, background processes |
-| Memory Persistence | Hooks that save/load context across sessions automatically |
-| Continuous Learning | Auto-extract patterns from sessions into reusable skills |
-| Verification Loops | Checkpoint vs continuous evals, grader types, pass@k metrics |
-| Parallelization | Git worktrees, cascade method, when to scale instances |
-| Subagent Orchestration | The context problem, iterative retrieval pattern |
+- **Universal Multi-Agent Compatibility**: Single repository configuration powers Google Antigravity, Claude Code, Gemini CLI, Copilot, Codex, Cursor, and Windsurf without duplication.
+- **Zero External Runtime Dependencies**: Pure Node.js (>= 18) core. Zero npm runtime dependencies.
+- **Durable Memory and Operating Rules**: Supreme constitution (`GLOBAL.md`), project-level operating manual (`docs/ai/`), and repository memory (`MEMORY.md`, `NOTES.md`).
+- **Comprehensive Quality Invariants**: Zero emojis in code, comments, or documentation; all source files strictly under 400 lines; functions under 50 lines; immutable patterns.
+- **Owner-Controlled Git**: Agents never stage, commit, branch, or push autonomously (`RULE-GIT-001`).
+- **1-Step Project Adoption**: Instant adoption wizard scaffolds any project into the system in seconds.
 
 ---
 
-## Cross-Platform Support
+## 1-Line Quick Install
 
-This plugin now fully supports **Windows, macOS, and Linux**. All hooks and scripts have been rewritten in Node.js for maximum compatibility.
+### Windows (PowerShell)
 
-### Package Manager Detection
+```powershell
+irm https://raw.githubusercontent.com/Gabby-design/Everything-gabby-ai/main/setup.ps1 | iex
+```
 
-The plugin automatically detects your preferred package manager (npm, pnpm, yarn, or bun) with the following priority:
-
-1. **Environment variable**: `CLAUDE_PACKAGE_MANAGER`
-2. **Project config**: `.claude/package-manager.json`
-3. **package.json**: `packageManager` field
-4. **Lock file**: Detection from package-lock.json, yarn.lock, pnpm-lock.yaml, or bun.lockb
-5. **Global config**: `~/.claude/package-manager.json`
-6. **Fallback**: First available package manager
-
-To set your preferred package manager:
+### macOS / Linux / WSL (Bash)
 
 ```bash
-# Via environment variable
-export CLAUDE_PACKAGE_MANAGER=pnpm
-
-# Via global config
-node scripts/setup-package-manager.js --global pnpm
-
-# Via project config
-node scripts/setup-package-manager.js --project bun
-
-# Detect current setting
-node scripts/setup-package-manager.js --detect
+curl -fsSL https://raw.githubusercontent.com/Gabby-design/Everything-gabby-ai/main/setup.sh | bash
 ```
 
-Or use the `/setup-pm` command in Claude Code.
-
----
-
-## What's Inside
-
-This repo is a **Claude Code plugin** - install it directly or copy components manually.
-
-```
-everything-claude-code/
-|-- .claude-plugin/   # Plugin and marketplace manifests
-|   |-- plugin.json         # Plugin metadata and component paths
-|   |-- marketplace.json    # Marketplace catalog for /plugin marketplace add
-|
-|-- agents/           # Specialized subagents for delegation
-|   |-- planner.md           # Feature implementation planning
-|   |-- architect.md         # System design decisions
-|   |-- tdd-guide.md         # Test-driven development
-|   |-- code-reviewer.md     # Quality and security review
-|   |-- security-reviewer.md # Vulnerability analysis
-|   |-- build-error-resolver.md
-|   |-- e2e-runner.md        # Playwright E2E testing
-|   |-- refactor-cleaner.md  # Dead code cleanup
-|   |-- doc-updater.md       # Documentation sync
-|
-|-- skills/           # Workflow definitions and domain knowledge
-|   |-- coding-standards/           # Language best practices
-|   |-- backend-patterns/           # API, database, caching patterns
-|   |-- frontend-patterns/          # React, Next.js patterns
-|   |-- continuous-learning/        # Auto-extract patterns from sessions (Longform Guide)
-|   |-- strategic-compact/          # Manual compaction suggestions (Longform Guide)
-|   |-- tdd-workflow/               # TDD methodology
-|   |-- security-review/            # Security checklist
-|   |-- eval-harness/               # Verification loop evaluation (Longform Guide)
-|   |-- verification-loop/          # Continuous verification (Longform Guide)
-|
-|-- commands/         # Slash commands for quick execution
-|   |-- tdd.md              # /tdd - Test-driven development
-|   |-- plan.md             # /plan - Implementation planning
-|   |-- e2e.md              # /e2e - E2E test generation
-|   |-- code-review.md      # /code-review - Quality review
-|   |-- build-fix.md        # /build-fix - Fix build errors
-|   |-- refactor-clean.md   # /refactor-clean - Dead code removal
-|   |-- learn.md            # /learn - Extract patterns mid-session (Longform Guide)
-|   |-- checkpoint.md       # /checkpoint - Save verification state (Longform Guide)
-|   |-- verify.md           # /verify - Run verification loop (Longform Guide)
-|   |-- setup-pm.md         # /setup-pm - Configure package manager (NEW)
-|
-|-- rules/            # Always-follow guidelines (copy to ~/.claude/rules/)
-|   |-- security.md         # Mandatory security checks
-|   |-- coding-style.md     # Immutability, file organization
-|   |-- testing.md          # TDD, 80% coverage requirement
-|   |-- git-workflow.md     # Commit format, PR process
-|   |-- agents.md           # When to delegate to subagents
-|   |-- performance.md      # Model selection, context management
-|
-|-- hooks/            # Trigger-based automations
-|   |-- hooks.json                # All hooks config (PreToolUse, PostToolUse, Stop, etc.)
-|   |-- memory-persistence/       # Session lifecycle hooks (Longform Guide)
-|   |-- strategic-compact/        # Compaction suggestions (Longform Guide)
-|
-|-- scripts/          # Cross-platform Node.js scripts (NEW)
-|   |-- lib/                     # Shared utilities
-|   |   |-- utils.js             # Cross-platform file/path/system utilities
-|   |   |-- package-manager.js   # Package manager detection and selection
-|   |-- hooks/                   # Hook implementations
-|   |   |-- session-start.js     # Load context on session start
-|   |   |-- session-end.js       # Save state on session end
-|   |   |-- pre-compact.js       # Pre-compaction state saving
-|   |   |-- suggest-compact.js   # Strategic compaction suggestions
-|   |   |-- evaluate-session.js  # Extract patterns from sessions
-|   |-- setup-package-manager.js # Interactive PM setup
-|
-|-- tests/            # Test suite (NEW)
-|   |-- lib/                     # Library tests
-|   |-- hooks/                   # Hook tests
-|   |-- run-all.js               # Run all tests
-|
-|-- contexts/         # Dynamic system prompt injection contexts (Longform Guide)
-|   |-- dev.md              # Development mode context
-|   |-- review.md           # Code review mode context
-|   |-- research.md         # Research/exploration mode context
-|
-|-- examples/         # Example configurations and sessions
-|   |-- CLAUDE.md           # Example project-level config
-|   |-- user-CLAUDE.md      # Example user-level config
-|
-|-- mcp-configs/      # MCP server configurations
-|   |-- mcp-servers.json    # GitHub, Supabase, Vercel, Railway, etc.
-|
-|-- marketplace.json  # Self-hosted marketplace config (for /plugin marketplace add)
-```
-
----
-
-## Installation
-
-### Option 1: Install as Plugin (Recommended)
-
-The easiest way to use this repo - install as a Claude Code plugin:
+### Manual Clone and Setup
 
 ```bash
-# Add this repo as a marketplace
-/plugin marketplace add affaan-m/everything-claude-code
-
-# Install the plugin
-/plugin install everything-claude-code@everything-claude-code
+git clone https://github.com/Gabby-design/Everything-gabby-ai.git
+cd Everything-gabby-ai
+node bin/setup.js
 ```
 
-Or add directly to your `~/.claude/settings.json`:
-
-```json
-{
-  "extraKnownMarketplaces": {
-    "everything-claude-code": {
-      "source": {
-        "source": "github",
-        "repo": "affaan-m/everything-claude-code"
-      }
-    }
-  },
-  "enabledPlugins": {
-    "everything-claude-code@everything-claude-code": true
-  }
-}
-```
-
-This gives you instant access to all commands, agents, skills, and hooks.
-
----
-
-### Option 2: Manual Installation
-
-If you prefer manual control over what's installed:
+Non-interactive automated installation:
 
 ```bash
-# Clone the repo
-git clone https://github.com/affaan-m/everything-claude-code.git
-
-# Copy agents to your Claude config
-cp everything-claude-code/agents/*.md ~/.claude/agents/
-
-# Copy rules
-cp everything-claude-code/rules/*.md ~/.claude/rules/
-
-# Copy commands
-cp everything-claude-code/commands/*.md ~/.claude/commands/
-
-# Copy skills
-cp -r everything-claude-code/skills/* ~/.claude/skills/
+node bin/setup.js --yes
 ```
 
-#### Add hooks to settings.json
-
-Copy the hooks from `hooks/hooks.json` to your `~/.claude/settings.json`.
-
-#### Configure MCPs
-
-Copy desired MCP servers from `mcp-configs/mcp-servers.json` to your `~/.claude.json`.
-
-**Important:** Replace `YOUR_*_HERE` placeholders with your actual API keys.
-
----
-
-## Key Concepts
-
-### Agents
-
-Subagents handle delegated tasks with limited scope. Example:
-
-```markdown
----
-name: code-reviewer
-description: Reviews code for quality, security, and maintainability
-tools: Read, Grep, Glob, Bash
-model: opus
----
-
-You are a senior code reviewer...
-```
-
-### Skills
-
-Skills are workflow definitions invoked by commands or agents:
-
-```markdown
-# TDD Workflow
-
-1. Define interfaces first
-2. Write failing tests (RED)
-3. Implement minimal code (GREEN)
-4. Refactor (IMPROVE)
-5. Verify 80%+ coverage
-```
-
-### Hooks
-
-Hooks fire on tool events. Example - warn about console.log:
-
-```json
-{
-  "matcher": "tool == \"Edit\" && tool_input.file_path matches \"\\\\.(ts|tsx|js|jsx)$\"",
-  "hooks": [{
-    "type": "command",
-    "command": "#!/bin/bash\ngrep -n 'console\\.log' \"$file_path\" && echo '[Hook] Remove console.log' >&2"
-  }]
-}
-```
-
-### Rules
-
-Rules are always-follow guidelines. Keep them modular:
-
-```
-~/.claude/rules/
-  security.md      # No hardcoded secrets
-  coding-style.md  # Immutability, file limits
-  testing.md       # TDD, coverage requirements
-```
-
----
-
-## Running Tests
-
-The plugin includes a comprehensive test suite:
+To link the `gabby` CLI globally:
 
 ```bash
-# Run all tests
+npm link
+```
+
+---
+
+## System Architecture
+
+```text
+Everything-gabby-ai/
+|-- GLOBAL.md             # Supreme constitution loaded across all assistants
+|-- MEMORY.md             # Durable cross-project knowledge and facts
+|-- NOTES.md              # Research observations, patterns, and decisions
+|-- setup.ps1             # 1-line remote installer for Windows
+|-- setup.sh              # 1-line remote installer for macOS/Linux/WSL
+|-- bin/
+|   |-- gabby.js          # Master CLI executable (gabby init, doctor, sync, etc.)
+|   |-- setup.js          # First-time interactive setup wizard
+|-- agents/               # 10 specialized agent personas (planner, architect, tdd-guide, etc.)
+|-- skills/               # 35+ workflow playbooks and domain skills
+|-- rules/                # 11 modular rules with YAML frontmatter (RULE-GIT-001, etc.)
+|-- contexts/             # Dynamic system prompt injection contexts (dev, review, research)
+|-- templates/            # Canonical docs/ai/ scaffolding templates for project adoption
+|-- hooks/                # Lifecycle hooks (session-start, session-end, compaction)
+|-- scripts/              # Automation tools (sync, caveman upstream, publish)
+`-- tests/                # 25 test suites, 177 unit and integration tests
+```
+
+---
+
+## CLI Reference
+
+The `gabby` CLI provides complete management for your AI engineering workflows.
+
+### Project Management
+
+| Command | Description |
+|---|---|
+| `gabby init --apply` | Adopt current repository: scaffolds `docs/ai/`, migrates legacy rules, stamps version |
+| `gabby doctor` | Inspect global configuration and assistant hooks |
+| `gabby doctor --project` | Validate active project `docs/ai/` integrity and version stamp |
+| `gabby sync` | Synchronize skills, rules, agents, and constitution to `~/.agents`, `~/.gemini/config`, and `~/.claude` |
+| `gabby stamp` | Display or verify installed system version stamp |
+| `gabby list` | List all available agents, skills, rules, and workflows |
+
+### Communication Modes (Caveman Register)
+
+Configure token-efficient, high-density communication:
+
+```bash
+gabby caveman full     # Terse, high-density, drop filler, maximum technical precision (default)
+gabby caveman lite     # Moderate compression with standard structure
+gabby caveman ultra    # Extreme token minimization for machine intake
+gabby caveman off      # Conversational output
+```
+
+### Git and Releases
+
+```bash
+gabby publish patch    # Run verification suite, bump version, update changelog
+gabby publish minor    # Release minor update with new capabilities
+```
+
+---
+
+## Adopting a Project
+
+To onboard any new or existing repository to the Gabby AI system:
+
+```bash
+cd /path/to/your/project
+gabby init --apply
+```
+
+This instantly:
+1. Detects project stack and language (Next.js, React, Node.js, Python, Flutter, etc.).
+2. Scaffolds `docs/ai/` with standard structure:
+   - `docs/ai/AGENT-CORE.md`: Project operating manual.
+   - `docs/ai/RULES.md`: Project-specific rules registry.
+   - `docs/ai/MEMORY.md`: Durable project memory.
+   - `docs/ai/NOTES.md`: Active decisions and technical notes.
+   - `docs/ai/CHANGELOG.md`: Human-readable record of changes.
+3. Configures entry points: `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, and `.github/copilot-instructions.md`.
+4. Stamps repository with current system version.
+
+Verify adoption:
+
+```bash
+gabby doctor --project
+```
+
+---
+
+## The 8 Supreme Invariants
+
+Every agent and human engineer adheres to these immutable principles:
+
+1. **Scope and Autonomy**: Execute strictly what was requested. Present plans for changes spanning more than 3 files.
+2. **Read Before Writing**: Inspect existing patterns, naming, and boundaries before generating code.
+3. **Code Quality**: Immutable updates, files strictly under 400 lines, functions under 50 lines, zero emojis.
+4. **Safety**: Never touch credentials or secrets. Run background servers only when explicitly requested.
+5. **Testing and Verification**: Write failing tests first (Red-Green-Refactor). Continuous verification before reporting completion.
+6. **Owner Controls Git**: Never stage, commit, or push code without explicit authorization.
+7. **Terse Communication**: High information density, concrete evidence, direct technical facts.
+8. **Universal Handoff**: Cross-agent state persistence across sessions and tools.
+
+---
+
+## Specialized Agent Personas
+
+| Agent | Responsibility |
+|---|---|
+| `planner` | Feature requirements breakdown, milestone planning, dependency analysis |
+| `architect` | System boundaries, interface design, data flow modeling |
+| `tdd-guide` | Red-Green-Refactor test-driven development guidance |
+| `code-reviewer` | Quality, maintainability, architectural compliance audit |
+| `security-reviewer` | OWASP vulnerabilities, input sanitization, auth validation |
+| `build-error-resolver`| Mechanical and type error diagnostics without regressions |
+| `e2e-runner` | End-to-end integration and Playwright test validation |
+| `refactor-cleaner` | Dead code pruning and complexity reduction |
+| `doc-updater` | Continuous synchronization of `MEMORY.md`, `CHANGELOG.md`, and specifications |
+
+---
+
+## Automated Test Suite
+
+Run full verification suite (177 tests across 25 suites):
+
+```bash
 node tests/run-all.js
-
-# Run individual test files
-node tests/lib/utils.test.js
-node tests/lib/package-manager.test.js
-node tests/hooks/hooks.test.js
 ```
+
+All tests run in pure Node.js with zero external dependencies.
 
 ---
 
 ## Contributing
 
-**Contributions are welcome and encouraged.**
-
-This repo is meant to be a community resource. If you have:
-- Useful agents or skills
-- Clever hooks
-- Better MCP configurations
-- Improved rules
-
-Please contribute! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
-
-### Ideas for Contributions
-
-- Language-specific skills (Python, Go, Rust patterns)
-- Framework-specific configs (Django, Rails, Laravel)
-- DevOps agents (Kubernetes, Terraform, AWS)
-- Testing strategies (different frameworks)
-- Domain-specific knowledge (ML, data engineering, mobile)
-
----
-
-## Background
-
-I've been using Claude Code since the experimental rollout. Won the Anthropic x Forum Ventures hackathon in Sep 2025 building [zenith.chat](https://zenith.chat) with [@DRodriguezFX](https://x.com/DRodriguezFX) - entirely using Claude Code.
-
-These configs are battle-tested across multiple production applications.
-
----
-
-## Important Notes
-
-### Context Window Management
-
-**Critical:** Don't enable all MCPs at once. Your 200k context window can shrink to 70k with too many tools enabled.
-
-Rule of thumb:
-- Have 20-30 MCPs configured
-- Keep under 10 enabled per project
-- Under 80 tools active
-
-Use `disabledMcpServers` in project config to disable unused ones.
-
-### Customization
-
-These configs work for my workflow. You should:
-1. Start with what resonates
-2. Modify for your stack
-3. Remove what you don't use
-4. Add your own patterns
-
----
-
-## Star History
-
-[![Star History Chart](https://api.star-history.com/svg?repos=affaan-m/everything-claude-code&type=Date)](https://star-history.com/#affaan-m/everything-claude-code&Date)
-
----
-
-## Links
-
-- **Shorthand Guide (Start Here):** [The Shorthand Guide to Everything Claude Code](https://x.com/affaanmustafa/status/2012378465664745795)
-- **Longform Guide (Advanced):** [The Longform Guide to Everything Claude Code](https://x.com/affaanmustafa/status/2014040193557471352)
-- **Follow:** [@affaanmustafa](https://x.com/affaanmustafa)
-- **zenith.chat:** [zenith.chat](https://zenith.chat)
+Contributions adhering to 8 Supreme Principles are welcome. Review [CONTRIBUTING.md](CONTRIBUTING.md) for contribution workflows and testing gates.
 
 ---
 
 ## License
 
-MIT - Use freely, modify as needed, contribute back if you can.
-
----
-
-**Star this repo if it helps. Read both guides. Build something great.**
+MIT License. Open and freely usable across commercial and open-source projects.
