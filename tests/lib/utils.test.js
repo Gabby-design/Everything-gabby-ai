@@ -72,6 +72,20 @@ function runTests() {
     assert.ok(sessionsDir.includes('sessions'), 'Should contain sessions');
   })) passed++; else failed++;
 
+  if (test('getGlobalAgentsDir returns path under home with .agents', () => {
+    const globalAgentsDir = utils.getGlobalAgentsDir();
+    const homeDir = utils.getHomeDir();
+    assert.ok(globalAgentsDir.startsWith(homeDir), 'Global agents dir should be under home');
+    assert.ok(globalAgentsDir.includes('.agents'), 'Should contain .agents');
+  })) passed++; else failed++;
+
+  if (test('getGeminiConfigDir returns path under home with .gemini/config', () => {
+    const geminiDir = utils.getGeminiConfigDir();
+    const homeDir = utils.getHomeDir();
+    assert.ok(geminiDir.startsWith(homeDir), 'Gemini config dir should be under home');
+    assert.ok(geminiDir.includes('.gemini'), 'Should contain .gemini');
+  })) passed++; else failed++;
+
   if (test('getTempDir returns valid temp directory', () => {
     const tempDir = utils.getTempDir();
     assert.strictEqual(typeof tempDir, 'string');
@@ -171,6 +185,23 @@ function runTests() {
       assert.strictEqual(matches[1].lineNumber, 3);
     } finally {
       fs.unlinkSync(testFile);
+    }
+  })) passed++; else failed++;
+
+  if (test('copyDirRecursive copies directory tree recursively', () => {
+    const srcDir = path.join(utils.getTempDir(), `utils-src-${Date.now()}`);
+    const destDir = path.join(utils.getTempDir(), `utils-dest-${Date.now()}`);
+    try {
+      utils.writeFile(path.join(srcDir, 'file1.txt'), 'hello');
+      utils.writeFile(path.join(srcDir, 'sub', 'file2.txt'), 'world');
+
+      const success = utils.copyDirRecursive(srcDir, destDir);
+      assert.strictEqual(success, true);
+      assert.strictEqual(utils.readFile(path.join(destDir, 'file1.txt')), 'hello');
+      assert.strictEqual(utils.readFile(path.join(destDir, 'sub', 'file2.txt')), 'world');
+    } finally {
+      if (fs.existsSync(srcDir)) fs.rmSync(srcDir, { recursive: true });
+      if (fs.existsSync(destDir)) fs.rmSync(destDir, { recursive: true });
     }
   })) passed++; else failed++;
 

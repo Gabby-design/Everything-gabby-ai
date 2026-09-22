@@ -1,3 +1,9 @@
+---
+name: verification-loop
+description: Continuous verification loop (build, typecheck, lint, tests, security, diff review) run after any significant change and before reporting ready for commit.
+invocable: true
+---
+
 # Verification Loop Skill
 
 A comprehensive verification system for Claude Code sessions.

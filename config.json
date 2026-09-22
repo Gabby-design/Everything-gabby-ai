@@ -1,0 +1,33 @@
+{
+  "$comment": "Universal AI agent system configuration. Mirrored to ~/.agents/config.json.",
+  "agents": {
+    "claude": true,
+    "antigravity": true,
+    "gemini": true,
+    "copilot": true,
+    "codex": true,
+    "agentsMd": true
+  },
+  "hooks": {
+    "install": false,
+    "tmux": false
+  },
+  "wrappers": {
+    "codex": true,
+    "gemini": true
+  },
+  "bridges": {
+    "cursor": false,
+    "windsurf": false,
+    "copilotPrompts": false
+  },
+  "prdDir": "docs/ai/prd",
+  "caveman": {
+    "mode": "full"
+  },
+  "contextDocs": [
+    "MEMORY",
+    "NOTES",
+    "CHANGELOG"
+  ]
+}

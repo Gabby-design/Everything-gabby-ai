@@ -42,6 +42,20 @@ function getLearnedSkillsDir() {
 }
 
 /**
+ * Get the global agents root directory (~/.agents)
+ */
+function getGlobalAgentsDir() {
+  return path.join(getHomeDir(), '.agents');
+}
+
+/**
+ * Get the Google Antigravity / Gemini config directory
+ */
+function getGeminiConfigDir() {
+  return path.join(getHomeDir(), '.gemini', 'config');
+}
+
+/**
  * Get the temp directory (cross-platform)
  */
 function getTempDir() {
@@ -222,6 +236,29 @@ function appendFile(filePath, content) {
 }
 
 /**
+ * Copy directory recursively (cross-platform)
+ */
+function copyDirRecursive(src, dest, options = {}) {
+  if (!fs.existsSync(src)) return false;
+  ensureDir(dest);
+
+  const entries = fs.readdirSync(src, { withFileTypes: true });
+  for (const entry of entries) {
+    const srcPath = path.join(src, entry.name);
+    const destPath = path.join(dest, entry.name);
+
+    if (entry.isDirectory()) {
+      copyDirRecursive(srcPath, destPath, options);
+    } else {
+      if (options.overwrite !== false || !fs.existsSync(destPath)) {
+        fs.copyFileSync(srcPath, destPath);
+      }
+    }
+  }
+  return true;
+}
+
+/**
  * Check if a command exists in PATH
  */
 function commandExists(cmd) {
@@ -263,10 +300,14 @@ function isGitRepo() {
 /**
  * Get git modified files
  */
-function getGitModifiedFiles(patterns = []) {
+function getGitModifiedFiles(dirOrPatterns = []) {
   if (!isGitRepo()) return [];
 
-  const result = runCommand('git diff --name-only HEAD');
+  const isStringDir = typeof dirOrPatterns === 'string';
+  const patterns = Array.isArray(dirOrPatterns) ? dirOrPatterns : [];
+  const cmd = isStringDir ? `git -C "${dirOrPatterns}" diff --name-only HEAD` : 'git diff --name-only HEAD';
+
+  const result = runCommand(cmd);
   if (!result.success) return [];
 
   let files = result.output.split('\n').filter(Boolean);
@@ -338,6 +379,8 @@ module.exports = {
   getClaudeDir,
   getSessionsDir,
   getLearnedSkillsDir,
+  getGlobalAgentsDir,
+  getGeminiConfigDir,
   getTempDir,
   ensureDir,
 
@@ -351,6 +394,7 @@ module.exports = {
   readFile,
   writeFile,
   appendFile,
+  copyDirRecursive,
   replaceInFile,
   countInFile,
   grepFile,

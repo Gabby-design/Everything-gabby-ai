@@ -145,7 +145,7 @@ After ~50 tool calls, you'll see a suggestion to run `/compact`. This helps main
 ## Updating
 
 ```bash
-cd ~/dev/worldflowai/everything-claude-code
+cd ~/dev/worldflowai/everything-gabby
 git pull
 
 # Symlinks auto-update, but hooks need re-copy if changed:

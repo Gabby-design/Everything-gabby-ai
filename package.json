@@ -1,0 +1,19 @@
+{
+  "name": "everything-gabby",
+  "version": "2.0.0",
+  "description": "gabby - Universal multi-assistant AI agent development system for Claude Code, Google Antigravity, Google Gemini CLI, GitHub Copilot, Codex, Cursor, and standards-compliant agents.",
+  "bin": {
+    "gabby": "./bin/gabby.js",
+    "agent": "./bin/gabby.js"
+  },
+  "scripts": {
+    "test": "node tests/run-all.js",
+    "sync": "node scripts/sync-global.js",
+    "init:project": "node scripts/init-project.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT",
+  "private": false
+}

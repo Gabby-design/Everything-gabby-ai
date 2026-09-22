@@ -13,7 +13,30 @@ const testsDir = __dirname;
 const testFiles = [
   'lib/utils.test.js',
   'lib/package-manager.test.js',
-  'hooks/hooks.test.js'
+  'lib/frontmatter.test.js',
+  'lib/managed.test.js',
+  'lib/registry.test.js',
+  'lib/ops.test.js',
+  'lib/detect.test.js',
+  'lib/adapters.test.js',
+  'lib/template.test.js',
+  'lib/paths.test.js',
+  'lib/scope.test.js',
+  'lib/cli.test.js',
+  'lib/plan.test.js',
+  'lib/ctx.test.js',
+  'lib/caveman.test.js',
+  'hooks/hooks.test.js',
+  'skills.test.js',
+  'global.test.js',
+  'sync-global.test.js',
+  'init-project.test.js',
+  'phase2-skills-rules.test.js',
+  'phase3-constitution.test.js',
+  'phase4-adapters.test.js',
+  'phase5-project-system.test.js',
+  'phase6-cli-engine.test.js',
+  'phase7-handoff-hooks.test.js'
 ];
 
 console.log('╔══════════════════════════════════════════════════════════╗');

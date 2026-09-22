@@ -3,6 +3,17 @@
   "hooks": {
     "PreToolUse": [
       {
+        "matcher": "Edit|Write|MultiEdit|NotebookEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/scripts/hooks/scope-guard.js\"",
+            "timeout": 10
+          }
+        ],
+        "description": "Scope guard: block edits that resolve into ~/.agents from a project session (RULE-SCOPE-001)"
+      },
+      {
         "matcher": "tool == \"Bash\" && tool_input.command matches \"(npm run dev|pnpm( run)? dev|yarn dev|bun run dev)\"",
         "hooks": [
           {
