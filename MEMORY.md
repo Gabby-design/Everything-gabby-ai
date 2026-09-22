@@ -13,7 +13,7 @@
 
 ## Projects with a docs/ai/ system
 
-- <!-- One line per project: path - gabby_version - description -->
+- `C:\Users\Olamide\Documents\portfolio` - v2.0.0 - Personal portfolio built with Next.js 16 and Tailwind CSS
 
 ## Preferences agents keep getting wrong
 
