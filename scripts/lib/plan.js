@@ -62,7 +62,7 @@ function projectPlan(ctx, dir, { vendor = false, skillNames = null } = {}) {
   if (vendor && ctx.registry) {
     const wanted = skillNames
       ? (ctx.registry.skills || []).filter(s => skillNames.includes(s.name))
-      : (ctx.registry.skills || []).filter(s => s.invocable && s.name !== 'agent-system');
+      : (ctx.registry.skills || []).filter(s => s.name !== 'agent-system');
 
     for (const s of wanted) {
       ops.push({
@@ -81,6 +81,16 @@ function projectPlan(ctx, dir, { vendor = false, skillNames = null } = {}) {
         source: r.file,
         agent: 'vendor',
         why: `vendored rule ${r.name}`
+      });
+    }
+
+    for (const a of (ctx.registry.agents || [])) {
+      ops.push({
+        kind: 'copy',
+        path: path.join(dir, '.agents', 'agents', a.fileName),
+        source: a.file,
+        agent: 'vendor',
+        why: `vendored agent ${a.name}`
       });
     }
   }

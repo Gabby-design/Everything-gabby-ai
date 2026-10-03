@@ -85,7 +85,9 @@ function statement(mode, { scope = 'global' } = {}) {
   return [
     `Communication mode: **${mode}**${scope === 'global' ? ' by default' : ' for this project'}:`,
     `- ${level}`,
-    '- Pattern: [component] [action] [reason]. [next step]. No conversational preamble or fluff.',
+    '- Pattern: [component] [action] [reason]. [next step]. No conversational preamble, postamble, or fluff.',
+    '- Output brevity: Keep responses minimal (under 3-5 lines) unless the user explicitly requests an in-depth breakdown.',
+    '- Action focus: Prioritize tool execution over chat explanation. State what was done and stop.',
     '- Technical terms, code, commands, paths, numbers, and exact error strings stay verbatim.',
     '- Safety exception: use full clear sentences for security warnings, irreversible actions, or ambiguity.',
     '- Zero emojis anywhere in code, markdown, comments, or output (Core Principle 3).'

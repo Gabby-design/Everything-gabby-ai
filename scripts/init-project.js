@@ -19,6 +19,10 @@ const ops = require('./lib/ops');
 const adapters = require('./lib/adapters');
 const registry = require('./lib/registry');
 const packageManager = require('./lib/package-manager');
+const plan = require('./lib/plan');
+const paths = require('./lib/paths');
+const caveman = require('./lib/caveman');
+const { setKey } = require('./lib/frontmatter');
 
 const repoRoot = path.resolve(__dirname, '..');
 
@@ -105,16 +109,26 @@ function initProject(options = {}) {
     });
   }
 
-  // Step 2: Cross-Assistant Adapter entry points
-  const ctx = {
-    root: utils.getGlobalAgentsDir(),
-    tilde: (p) => p.replace(utils.getHomeDir(), '~'),
-    registry: registry.all(repoRoot),
-    config: { agents: {} }
-  };
+  // Step 2: Cross-Assistant Adapter entry points & vendored components
+  const config = paths.loadConfig();
+  const ctx = plan.context({
+    root: repoRoot,
+    config,
+    registry: registry.all(repoRoot)
+  });
 
-  const adapterOps = adapters.project(ctx, targetDir);
-  plannedOps.push(...adapterOps);
+  // Write .caveman.json in project root
+  const effMode = options.cavemanMode || (config.caveman && config.caveman.mode) || 'ultra';
+  plannedOps.push({
+    kind: 'file',
+    path: path.join(targetDir, '.caveman.json'),
+    content: JSON.stringify({ defaultMode: effMode }, null, 2) + '\n',
+    agent: 'system',
+    why: 'Enforce concise caveman communication mode'
+  });
+
+  const projectOps = plan.projectPlan(ctx, targetDir, { vendor: true });
+  plannedOps.push(...projectOps);
 
   // Step 3: Inspect and apply operations with conflict protection
   
@@ -139,16 +153,13 @@ function initProject(options = {}) {
   const inspected = ops.inspect(plannedOps);
   const applied = ops.apply(plannedOps, { dryRun });
 
-  // Post-stamp SYSTEM.md with version
+  // Post-stamp SYSTEM.md with version and all vendored skills
   if (!dryRun) {
     const sysPath = path.join(docsAiDir, 'SYSTEM.md');
     if (fs.existsSync(sysPath)) {
       let sysContent = fs.readFileSync(sysPath, 'utf8');
-      if (sysContent.includes('gabby_version:')) {
-        sysContent = sysContent.replace(/gabby_version:.*/, 'gabby_version: 2.0.0');
-      } else {
-        sysContent = sysContent.replace('---', '---\ngabby_version: 2.0.0');
-      }
+      const allSkillNames = (ctx.registry.skills || []).map(s => s.name);
+      sysContent = setKey(setKey(sysContent, 'vendored', allSkillNames), 'gabby_version', '2.0.0');
       fs.writeFileSync(sysPath, sysContent, 'utf8');
     }
   }
@@ -165,7 +176,7 @@ function initProject(options = {}) {
     inspected,
     applied,
     templatesCount: templateList.length,
-    adapterOpsCount: adapterOps.length
+    adapterOpsCount: projectOps.length
   };
 }
 

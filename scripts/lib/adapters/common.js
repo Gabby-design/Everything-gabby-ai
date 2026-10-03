@@ -32,8 +32,11 @@ function globalBlock(ctx, { importSyntax = false } = {}) {
   const cave = caveman.statement(mode, { scope: 'global' });
 
   if (importSyntax) {
+    const importPath = process.platform === 'win32'
+      ? path.resolve(ctx.root, 'GLOBAL.md').replace(/\\/g, '/')
+      : `${root}/GLOBAL.md`;
     return [
-      `@${root}/GLOBAL.md`,
+      `@${importPath}`,
       `Global skills, agents, and rules reside in ${root}/. Invoke a skill by name (e.g., "use the create-prd skill"). In a project repository, docs/ai/AGENT-CORE.md is canonical and wins on conflict.`,
       cave
     ].join('\n');
