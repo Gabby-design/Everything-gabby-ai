@@ -1,6 +1,6 @@
-# Contributing to Everything Claude Code
+# Contributing to Everything Gabby AI
 
-Thanks for wanting to contribute. This repo is meant to be a community resource for Claude Code users.
+Thanks for wanting to contribute. This repository is a universal multi-assistant system for Google Antigravity, Claude Code, Google Gemini CLI, GitHub Copilot, Codex, Cursor, and Windsurf users.
 
 ## What We're Looking For
 

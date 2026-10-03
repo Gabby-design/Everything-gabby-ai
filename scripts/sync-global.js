@@ -11,6 +11,7 @@
 const fs = require('fs');
 const path = require('path');
 const utils = require('./lib/utils');
+const frontmatter = require('./lib/frontmatter');
 
 const repoRoot = path.resolve(__dirname, '..');
 
@@ -81,6 +82,10 @@ function generateGlobalIndex(items) {
 function extractTitle(filePath, fallback) {
   const content = utils.readFile(filePath);
   if (!content) return fallback;
+  const parsed = frontmatter.parse(content);
+  if (parsed.hasFrontmatter && parsed.data.description) {
+    return parsed.data.description;
+  }
   const match = content.match(/^#\s+(.+)$/m);
   return match ? match[1].trim() : fallback;
 }

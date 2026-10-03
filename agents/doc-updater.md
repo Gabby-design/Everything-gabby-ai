@@ -386,7 +386,7 @@ Regenerated codemaps and updated documentation to reflect current codebase state
 - [x] No obsolete references
 
 ### Impact
-🟢 LOW - Documentation only, no code changes
+[LOW] - Documentation only, no code changes
 
 See docs/CODEMAPS/INDEX.md for complete architecture overview.
 ```

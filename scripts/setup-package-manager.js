@@ -81,7 +81,7 @@ function detectAndShow() {
   console.log('Available package managers:');
   for (const pmName of Object.keys(PACKAGE_MANAGERS)) {
     const installed = available.includes(pmName);
-    const indicator = installed ? '✓' : '✗';
+    const indicator = installed ? '[x]' : '[ ]';
     const current = pmName === pm.name ? ' (current)' : '';
     console.log(`  ${indicator} ${pmName}${current}`);
   }
@@ -128,7 +128,7 @@ function setGlobal(pmName) {
 
   try {
     setPreferredPackageManager(pmName);
-    console.log(`\n✓ Global preference set to: ${pmName}`);
+    console.log(`\n[OK] Global preference set to: ${pmName}`);
     console.log('  Saved to: ~/.claude/package-manager.json');
     console.log('');
   } catch (err) {
@@ -146,7 +146,7 @@ function setProject(pmName) {
 
   try {
     setProjectPackageManager(pmName);
-    console.log(`\n✓ Project preference set to: ${pmName}`);
+    console.log(`\n[OK] Project preference set to: ${pmName}`);
     console.log('  Saved to: .claude/package-manager.json');
     console.log('');
   } catch (err) {

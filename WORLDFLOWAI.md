@@ -1,6 +1,6 @@
-# Everything Claude Code - WorldFlowAI Setup Guide
+# Everything Gabby AI - WorldFlowAI Setup Guide
 
-Quick reference for using the everything-claude-code toolkit with synapse and arbiter projects.
+Quick reference for using the everything-gabby-ai toolkit with synapse and arbiter projects.
 
 ## Installed Components
 

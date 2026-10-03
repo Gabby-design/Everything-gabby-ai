@@ -164,9 +164,9 @@ npx playwright test tests/e2e/markets/search-and-view.spec.ts
 
 Running 3 tests using 3 workers
 
-  ✓  [chromium] › search-and-view.spec.ts:5:3 › user can search markets and view details (4.2s)
-  ✓  [chromium] › search-and-view.spec.ts:52:3 › search with no results shows empty state (1.8s)
-  ✓  [chromium] › search-and-view.spec.ts:67:3 › can clear search and see all markets again (2.9s)
+  [PASS]  [chromium] › search-and-view.spec.ts:5:3 › user can search markets and view details (4.2s)
+  [PASS]  [chromium] › search-and-view.spec.ts:52:3 › search with no results shows empty state (1.8s)
+  [PASS]  [chromium] › search-and-view.spec.ts:67:3 › can clear search and see all markets again (2.9s)
 
   3 passed (9.1s)
 
@@ -182,7 +182,7 @@ Artifacts generated:
 ╔══════════════════════════════════════════════════════════════╗
 ║                    E2E Test Results                          ║
 ╠══════════════════════════════════════════════════════════════╣
-║ Status:     ✅ ALL TESTS PASSED                              ║
+║ Status:     [PASS] ALL TESTS PASSED                              ║
 ║ Total:      3 tests                                          ║
 ║ Passed:     3 (100%)                                         ║
 ║ Failed:     0                                                ║
@@ -191,15 +191,15 @@ Artifacts generated:
 ╚══════════════════════════════════════════════════════════════╝
 
 Artifacts:
-📸 Screenshots: 2 files
-📹 Videos: 0 files (only on failure)
-🔍 Traces: 0 files (only on failure)
-📊 HTML Report: playwright-report/index.html
+Screenshots: 2 files
+Videos: 0 files (only on failure)
+Traces: 0 files (only on failure)
+HTML Report: playwright-report/index.html
 
 View report: npx playwright show-report
 ```
 
-✅ E2E test suite ready for CI/CD integration!
+[PASS] E2E test suite ready for CI/CD integration!
 ```
 
 ## Test Artifacts
@@ -235,7 +235,7 @@ open artifacts/search-results.png
 If a test fails intermittently:
 
 ```
-⚠️  FLAKY TEST DETECTED: tests/e2e/markets/trade.spec.ts
+[WARN] FLAKY TEST DETECTED: tests/e2e/markets/trade.spec.ts
 
 Test passed 7/10 runs (70% pass rate)
 
@@ -254,10 +254,10 @@ Quarantine recommendation: Mark as test.fixme() until fixed
 ## Browser Configuration
 
 Tests run on multiple browsers by default:
-- ✅ Chromium (Desktop Chrome)
-- ✅ Firefox (Desktop)
-- ✅ WebKit (Desktop Safari)
-- ✅ Mobile Chrome (optional)
+- [PASS] Chromium (Desktop Chrome)
+- [PASS] Firefox (Desktop)
+- [PASS] WebKit (Desktop Safari)
+- [PASS] Mobile Chrome (optional)
 
 Configure in `playwright.config.ts` to adjust browsers.
 
@@ -285,7 +285,7 @@ Add to your CI pipeline:
 
 For PMX, prioritize these E2E tests:
 
-**🔴 CRITICAL (Must Always Pass):**
+**[HIGH] CRITICAL (Must Always Pass):**
 1. User can connect wallet
 2. User can browse markets
 3. User can search markets (semantic search)
@@ -294,7 +294,7 @@ For PMX, prioritize these E2E tests:
 6. Market resolves correctly
 7. User can withdraw funds
 
-**🟡 IMPORTANT:**
+**[MEDIUM] IMPORTANT:**
 1. Market creation flow
 2. User profile updates
 3. Real-time price updates
@@ -305,20 +305,20 @@ For PMX, prioritize these E2E tests:
 ## Best Practices
 
 **DO:**
-- ✅ Use Page Object Model for maintainability
-- ✅ Use data-testid attributes for selectors
-- ✅ Wait for API responses, not arbitrary timeouts
-- ✅ Test critical user journeys end-to-end
-- ✅ Run tests before merging to main
-- ✅ Review artifacts when tests fail
+- [PASS] Use Page Object Model for maintainability
+- [PASS] Use data-testid attributes for selectors
+- [PASS] Wait for API responses, not arbitrary timeouts
+- [PASS] Test critical user journeys end-to-end
+- [PASS] Run tests before merging to main
+- [PASS] Review artifacts when tests fail
 
 **DON'T:**
-- ❌ Use brittle selectors (CSS classes can change)
-- ❌ Test implementation details
-- ❌ Run tests against production
-- ❌ Ignore flaky tests
-- ❌ Skip artifact review on failures
-- ❌ Test every edge case with E2E (use unit tests)
+- [FAIL] Use brittle selectors (CSS classes can change)
+- [FAIL] Test implementation details
+- [FAIL] Run tests against production
+- [FAIL] Ignore flaky tests
+- [FAIL] Skip artifact review on failures
+- [FAIL] Test every edge case with E2E (use unit tests)
 
 ## Important Notes
 
