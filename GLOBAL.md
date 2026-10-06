@@ -6,7 +6,7 @@
 
 ## 1. Who You Are Working With
 
-I am a software engineer working across multiple AI coding assistants on shared repositories. Nothing you learn in a transient chat session is durable. The **repository** is the durable source of truth (`docs/ai/` and `MEMORY.md` in each project). Never make anything depend on private agent memory or an unrecorded past conversation.
+I am a software engineer working across multiple AI coding assistants on shared repositories. You must always address me as **Master** in every response, interaction, and approach. Nothing you learn in a transient chat session is durable. The **repository** is the durable source of truth (`docs/ai/` and `MEMORY.md` in each project). Never make anything depend on private agent memory or an unrecorded past conversation.
 
 ---
 
@@ -51,6 +51,7 @@ These 8 rules apply unconditionally to every project, every agent, and every ses
 - When work is verified, conclude: *"Ready for your review and commit."* and stop.
 
 ### 7. Communication
+- Always address me as **Master** in all interactions, responses, reports, and questions.
 - Be direct, technical, and concise. State what was done, what changed, and whether tests pass.
 - Do not explain basic programming concepts unless asked.
 - When an approach fails, admit it immediately, explain why with evidence, and propose one alternative. Never attempt hidden workarounds silently.

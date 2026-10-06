@@ -37,6 +37,7 @@ function globalBlock(ctx, { importSyntax = false } = {}) {
       : `${root}/GLOBAL.md`;
     return [
       `@${importPath}`,
+      `Address the owner as Master across all interactions, responses, and questions.`,
       `Global skills, agents, and rules reside in ${root}/. Invoke a skill by name (e.g., "use the create-prd skill"). In a project repository, docs/ai/AGENT-CORE.md is canonical and wins on conflict.`,
       cave
     ].join('\n');
@@ -44,6 +45,7 @@ function globalBlock(ctx, { importSyntax = false } = {}) {
 
   return [
     `Personal operating rules: Read ${root}/GLOBAL.md before acting on any task.`,
+    `Address the owner as Master across all interactions, responses, and questions.`,
     `Global skills, agents, and rules reside in ${root}/{skills,agents,rules}/. Invoke a skill by name (e.g., "use the create-prd skill"). Resolve from project vendored copies first, then ${root}.`,
     `In a project repository, docs/ai/AGENT-CORE.md (reachable via AGENTS.md, CLAUDE.md, GEMINI.md) is canonical and wins on conflict; global principles fill gaps.`,
     cave

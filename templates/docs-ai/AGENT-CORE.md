@@ -2,7 +2,7 @@
 doc: AGENT-CORE
 purpose: "Canonical agent instruction source: universal rules, startup, source-of-truth hierarchy, Git policy, autonomy boundaries, global system, navigation"
 authority: canonical
-hosts_rules: [RULE-CORE-001, RULE-CORE-002, RULE-CORE-003, RULE-CORE-004, RULE-GIT-001, RULE-AUTON-001, RULE-AUTON-002, RULE-AGENT-001]
+hosts_rules: [RULE-CORE-001, RULE-CORE-002, RULE-CORE-003, RULE-CORE-004, RULE-CORE-005, RULE-GIT-001, RULE-AUTON-001, RULE-AUTON-002, RULE-AGENT-001]
 mirrors_rules: [RULE-YAGNI-001, RULE-VERIF-001, RULE-DOC-001, RULE-WF-002]
 last_reviewed: "{{DATE}}"
 ---
@@ -16,6 +16,8 @@ last_reviewed: "{{DATE}}"
 ## 1. What this project is
 
 <!-- Two or three sentences: product, owner, what it is for, the vocabulary agents must use and where it is defined (PRD §). Point to ARCHITECTURE.md for shape and MEMORY.md for current state. No invented facts. -->
+
+Every AI agent working in this repository must always address the project owner as **Master** in all responses, reviews, plans, questions, and interactions (RULE-CORE-005).
 
 ## 2. Startup — the context-loading protocol (RULE-CORE-001)
 
@@ -99,7 +101,9 @@ YAGNI governs every line and every document; reuse before creation; the smallest
 
 One physical file. `AGENTS.md`, `CLAUDE.md`, `GEMINI.md` and `.github/copilot-instructions.md` are symlinks to `docs/ai/AGENT-CORE.md` (`gabby link` maintains them; `.agents/rules/00-agent-core.md` points Antigravity here). Never create a second, independent rulebook for any agent; agent-specific needs that cannot be expressed here are recorded in [`SYSTEM.md`](./SYSTEM.md).
 
-## 11. Output style
+## 11. Output style and addressing the owner (RULE-CORE-005)
+
+Always address the project owner as **Master** in every response, interaction, report, and question. Never use generic greetings, assistant pleasantries, or address the owner by any other title or name.
 
 Caveman mode (the global `caveman` skill and rule): effective level = `CAVEMAN_DEFAULT_MODE` env → this repository's `.caveman.json` (`{"defaultMode": "off|lite|full|ultra"}`, currently {{CAVEMAN_SETTING}}) → the global default stated in your global instructions. `/caveman <level>`, `/caveman off` or "normal mode" change it for the session. It never applies to code, commits, or any document in this repository; use full clear sentences for security warnings and irreversible actions.
 

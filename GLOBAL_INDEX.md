@@ -74,6 +74,7 @@ See `GLOBAL.md` for the 8 Core Principles and supreme operating rules governing 
 | `agents` | Agent Orchestration - personas, specialization, handoffs, and verification workflows. |
 | `caveman` | Output-style rule - respond terse (caveman register) when caveman mode is active; levels lite, full, ultra; auto-clarity for security and irreversible actions; never applies to persisted code, commits, docs, memory, or notes. |
 | `coding-style` | Coding Style - pure Node >= 18, zero external runtime dependencies, zero emojis, file length limits (< 400 lines). |
+| `communication` | Communication Standards - address the project owner as Master across all interactions and responses. |
 | `dual-engine-synergy` | Task division and handoff contract between Claude Code and Google Antigravity / Gemini CLI. |
 | `git-workflow` | The owner controls Git (RULE-GIT-001). Conventional Commits and PR workflows for when authorized. |
 | `hooks` | Hooks System - lifecycle hooks, event triggers, deterministic execution, and timeout safety. |

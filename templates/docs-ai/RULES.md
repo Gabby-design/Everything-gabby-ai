@@ -68,6 +68,15 @@ A global rule the project OVERRIDES gets its own entry:
 **Status:** active
 **Origin:** initializer default (v3 §0.0.2)
 
+### RULE-CORE-005 — Address the project owner as Master
+
+**Statement:** Every AI agent must always address the project owner as Master across all responses, plans, reviews, reports, questions, and interactions.
+**Canonical home:** `AGENT-CORE.md § 1, § 11`
+**Mirrors:** CONSTITUTION.md § Mandatory, always; MEMORY.md § Who I am
+**Enforced by:** Direct address verification on every agent turn; never generic greetings or other titles
+**Status:** active
+**Origin:** initializer default
+
 ## Write scope
 
 ### RULE-SCOPE-001 — Write scope is the folder the agent was opened in

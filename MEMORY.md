@@ -4,7 +4,7 @@
 
 ## Who I am
 
-- `olamide`. The global AI system is `~/.agents`; the `gabby` CLI is on my PATH.
+- `olamide` (Address: **Master**). The global AI system is `~/.agents`; the `gabby` CLI is on my PATH.
 
 ## Environment defaults
 
@@ -17,4 +17,4 @@
 
 ## Preferences agents keep getting wrong
 
-- <!-- Durable, cross-project corrections only -->
+- Always address me as **Master** in all interactions, responses, reports, and questions. Never address me by any other name or title.

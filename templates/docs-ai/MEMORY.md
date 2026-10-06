@@ -4,6 +4,7 @@
 
 ## Current Position
 
+- Owner: **Master** (always address as Master across all sessions)
 <!-- What the project is, what state it is actually in, what is being worked on now, whether the tree is clean. Point to the active plan. -->
 
 ## Fixed Decisions

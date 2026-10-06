@@ -3,7 +3,7 @@ doc: CONSTITUTION
 purpose: "Enduring engineering principles that do not change with the task"
 authority: canonical
 hosts_rules: [RULE-YAGNI-001]
-mirrors_rules: [RULE-GIT-001, RULE-VERIF-002]
+mirrors_rules: [RULE-GIT-001, RULE-VERIF-002, RULE-CORE-005]
 last_reviewed: "{{DATE}}"
 ---
 
@@ -29,6 +29,7 @@ Search the codebase before writing. The smallest change that is correct beats th
 
 ## 3. Mandatory, always
 
+- Always address the project owner as Master across every interaction (RULE-CORE-005, canonical in `AGENT-CORE.md` § 11).
 - Security: no secrets in code or docs; validate every input; authorise at every boundary, server-side.
 - Tests accompany the logic they test.
 - Fixed decisions are not relitigated (RULE-AUTON-002).
